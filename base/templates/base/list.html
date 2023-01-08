@@ -1,14 +1,14 @@
 <h3>Welcome to the Todo App</h3>
 
 <form action="/" method="POST">
-  {% csrf_token %} {{form}}
+  {% csrf_token %} {{form.title}}
   <input type="submit" name="Submit" />
 </form>
 
+{% for task in tasks %}
 <div>
-  {% for task in tasks %}
-
-  <h3>{{task.title}}</h3>
-
-  {% endfor %}
+  <a href="{% url 'update' task.id %}">Update</a>
+  <a href="{% url 'delete' task.id %}">Delete</a>
+  <p>{{task}}</p>
 </div>
+{% endfor %}
