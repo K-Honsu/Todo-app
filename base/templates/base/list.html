@@ -1,9 +1,16 @@
 <h3>Welcome to the Todo App</h3>
 
+{% if request.user.is_authenticated %}
+<h2>Hello {{request.user}}</h2>
+{% endif %}
+<!-- <a href="{% url 'login-page' %}">Sign in</a> -->
+
+
 <form action="/" method="POST">
   {% csrf_token %} {{form.title}}
   <input type="submit" name="Submit" />
 </form>
+
 
 {% for task in tasks %}
 <div>
@@ -12,3 +19,5 @@
   <p>{{task}}</p>
 </div>
 {% endfor %}
+
+<a href="{% url 'logout-page' %}">Logout</a>

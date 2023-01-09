@@ -1,0 +1,34 @@
+{% if page == 'login-page' %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <h1>Login</h1>
+  <h4>Login in to use todo app</h4>
+  <div>
+    <label for="Username">Username</label>
+    <input type="text" name="username" placeholder="Enter username" />
+  </div>
+  <br />
+  <br />
+
+  <div>
+    <label for="Password">Password</label>
+    <input type="password" name="password" placeholder="Enter your password" />
+  </div>
+  <div>
+    <input type="submit" name="Submit" id="" />
+  </div>
+  <div>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+  </div>
+</form>
+{% else %}
+<!-- to register user -->
+<form action="" method="POST">
+  <h1>Register</h1>
+  {% csrf_token %} {{form.as_p}}
+  <br />
+  <button type="submit">Submit</button>
+  <p>Already have an account? <a href="{% url 'login-page' %}">Login</a></p>
+</form>
+{% endif %}
+<!-- end of page form -->
