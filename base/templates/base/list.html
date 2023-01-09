@@ -5,18 +5,23 @@
 {% endif %}
 <!-- <a href="{% url 'login-page' %}">Sign in</a> -->
 
-
 <form action="/" method="POST">
   {% csrf_token %} {{form.title}}
   <input type="submit" name="Submit" />
 </form>
 
-
 {% for task in tasks %}
 <div>
   <a href="{% url 'update' task.id %}">Update</a>
   <a href="{% url 'delete' task.id %}">Delete</a>
-  <p>{{task}}</p>
+
+  {% if task.completed == True %}
+  <br />
+  <s>{{task}}</s>
+  {% else %}
+  <br />
+  <span>{{task}}</span>
+  {% endif %}
 </div>
 {% endfor %}
 
