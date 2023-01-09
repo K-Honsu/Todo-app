@@ -25,7 +25,14 @@
 <!-- to register user -->
 <form action="" method="POST">
   <h1>Register</h1>
-  {% csrf_token %} {{form.as_p}}
+  {% csrf_token %} {% for field in form %}
+  <div>
+    <br />
+    <label for="">{{field.label}}:</label>
+    {{field}}
+  </div>
+  {% endfor %}
+  <!-- {{form.as_p}} -->
   <br />
   <button type="submit">Submit</button>
   <p>Already have an account? <a href="{% url 'login-page' %}">Login</a></p>
